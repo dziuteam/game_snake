@@ -6,7 +6,7 @@ var blockSize = 10;
 var widthInBlocks = width / blockSize;
 var heightInBlocks = height / blockSize;
 var score = 0;
-localStorage.setItem("highScore", score)
+
 var loadedHighscore = localStorage.getItem("highScore");
 console.log(loadedHighscore);
 
@@ -41,6 +41,7 @@ var gameOver = function () {
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
 	ctx.fillText("Game Over", width / 2, height / 2);
+	localStorage.setItem("highScore", score);
 };
 
 var circle = function (x, y, radius, fillCircle) {

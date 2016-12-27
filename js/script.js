@@ -41,7 +41,10 @@ var gameOver = function () {
 	ctx.textAlign = "center";
 	ctx.textBaseline = "middle";
 	ctx.fillText("Game Over", width / 2, height / 2);
+	if (score > loadedHighscore) {
 	localStorage.setItem("highScore", score);
+	}
+	return;
 };
 
 var circle = function (x, y, radius, fillCircle) {

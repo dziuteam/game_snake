@@ -6,9 +6,12 @@ var blockSize = 10;
 var widthInBlocks = width / blockSize;
 var heightInBlocks = height / blockSize;
 var score = 0;
+localStorage.setItem("highScore", score)
+var loadedHighscore = localStorage.getItem("highScore");
+console.log(loadedHighscore);
 
 var drawBorder = function () {
-	ctx.fillStyle = "Gray";
+	ctx.fillStyle = "darkblue";
 	ctx.fillRect(0, 0, width, blockSize);
 	ctx.fillRect(0, height - blockSize, width, blockSize);
 	ctx.fillRect(0, 0, blockSize, height);
@@ -21,6 +24,14 @@ var drawScore = function () {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.fillText("Score: " + score, blockSize, blockSize);
+};
+
+var drawHighScore = function () {
+	ctx.font = "20px Courier";
+	ctx.fillStyle = "Black";
+	ctx.textAlign = "right";
+	ctx.textBaseline = "top";
+	ctx.fillText("High-Score: " + loadedHighscore, 490, 10);
 };
 
 var gameOver = function () {
@@ -48,7 +59,8 @@ var Block = function (col, row) {
 	this.row = row; 
 };
 
-Block.prototype.drawSquare = function (color) { var x = this.col * blockSize;
+Block.prototype.drawSquare = function (color) { 
+	var x = this.col * blockSize;
 	var y = this.row * blockSize;
 		ctx.fillStyle = color;
 		ctx.fillRect(x, y, blockSize, blockSize);
@@ -76,7 +88,7 @@ var Snake = function () {
 
 Snake.prototype.draw = function () {
 	for (var i = 0; i < this.segments.length; i++) {
-		this.segments[i].drawSquare("Blue");
+		this.segments[i].drawSquare("Red");
 	}
 };
 
@@ -158,6 +170,7 @@ var apple = new Apple();
 var intervalId = setInterval(function () {
 	ctx.clearRect(0, 0, width, height);
 	drawScore();
+	drawHighScore();
 	snake.move();
 	snake.draw();
 	apple.draw();

@@ -1,3 +1,14 @@
-.card-placeholder {
-	background: lightblue;
+body {
+	text-align: center;
+	color: darkblue;
+}
+.thegame {
+	text-align: center;
+}
+#canvas {
+	background-color: lightblue;
+}
+.scoreboard{
+  font-size: 14px;
+  font-weight: bold;
 }

@@ -6,6 +6,11 @@ var blockSize = 10;
 var widthInBlocks = width / blockSize;
 var heightInBlocks = height / blockSize;
 var score = 0;
+var newGameBtn = document.getElementById('js-newGameButton');
+newGameBtn.addEventListener('click', newGame);
+function newGame() {
+	location.reload();
+};
 
 var loadedHighscore = localStorage.getItem("highScore");
 console.log(loadedHighscore);
@@ -45,6 +50,8 @@ var gameOver = function () {
 	localStorage.setItem("highScore", score);
 	}
 	return;
+	newGameBtn.innerText = 'Jeszcze raz';
+
 };
 
 var circle = function (x, y, radius, fillCircle) {

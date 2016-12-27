@@ -50,8 +50,6 @@ var gameOver = function () {
 	localStorage.setItem("highScore", score);
 	}
 	return;
-	newGameBtn.innerText = 'Jeszcze raz';
-
 };
 
 var circle = function (x, y, radius, fillCircle) {
